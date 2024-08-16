@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <body>
+    <div th:fragment="footer">
+
+      <div class="footer-clean text-dark">
+        <footer>
+          <div class="container">
+            <div class="row">
+              <div class="item col-3">
+                <h3>Product</h3>
+                <ul>
+                  <li><a href="#">Listing</a></li>
+                  <li><a href="#">Property</a></li>
+                  <li><a href="#">Agents</a></li>
+                  <li><a href="#">Blog</a></li>
+                </ul>
+              </div>
+              <div class="item col-3">
+                <h3>Resources</h3>
+                <ul>
+                  <li><a href="#">Our Homes</a></li>
+                  <li><a href="#">Member Stories</a></li>
+                  <li><a href="#">Video</a></li>
+                  <li><a href="#">Free Trial</a></li>
+                </ul>
+              </div>
+              <div class="item col-3">
+                <h3>Company</h3>
+                <ul>
+                  <li><a href="#">Partnerships</a></li>
+                  <li><a href="#">Term of use</a></li>
+                  <li><a href="#">Privacy</a></li>
+                  <li><a href="#">Sitemap</a></li>
+                </ul>
+              </div>
+              <div class="item col-3">
+                <h3>Get in touch</h3>
+                <p>You'll find your next home, in any style you prefer</p>
+                <div class="item social" style="display: flex">
+                  <!-- <a href="#"><img src="../img/facebook-app-symbol.png" alt="">
+                                <a href="#"><img src="../img/twitter.png" alt="">
+                                    <a href="#"><img src="../img/linkedin-big-logo.png" alt=""></a> -->
+                  <img th:src="@{/images//social-icon.svg}" 
+                  alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="row" id="row2">
+              <img th:src="@{/images/Logo (1).png}" width="100px" alt="" />
+              <p class="copyright">Copyright 2024, All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

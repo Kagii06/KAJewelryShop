@@ -1,0 +1,59 @@
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{site/dashboardLayout.html}"
+>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAJewelry Shop</title>
+</head>
+<body>
+	<main class="container-fluid" layout:fragment="content">
+		<section class="row">
+		  <div class="col">
+			<div class="row p-2">
+			  <div class="col-3 mt-2" th:each="product : ${pages.content}"                  >
+				<div class="card text-center"       
+				>
+				  <div class="card-header">[[${product.name}]]</div>
+				  <div class="card-body">
+					<img
+					th:src = "${product.image != null ?'/site/products/images/'+product.image : 'images/lacbac.jpg/'}"
+					  alt=""
+					  class="img-fluid"
+					/>
+					<div class="row border-top mt-2">
+					  <b>$[[${product.unitPrice}]]</b>
+					</div>
+				  </div>
+				  <div class="card-footer">
+					<a 
+					th:href="@{'/site/shopping-cart/add/' + ${product.productId}}"
+					class="btn btn-success"
+					  ><i class="fa fa-shopping-cart" aria-hidden="true"></i
+					></a>
+					<a href="" class="btn btn-info">Xem</a>
+				  </div>
+				</div>
+			  </div>
+
+			</div>
+			<div class="row text-center">
+				<div class="card card-footer text-muted text-center">
+					Pages: <span class=""
+					  th:each="i: ${#numbers.sequence(0, pages.totalPages - 1)}"> <a
+					  th:href="@{/site/index(page=${i},size=${pages.size}, sort = ${sort})}"
+					  th:text="${i+1}"></a>
+					</span>
+				  </div>
+			</div>
+		  </div>
+		</section>
+
+	  </main>
+</body>
+</html>

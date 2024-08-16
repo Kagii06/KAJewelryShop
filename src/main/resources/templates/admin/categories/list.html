@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{admin/dashboardLayout.html}"
+>
+  </head>
+
+  <body>
+    <main class="container">
+      <section class="row">
+        <div class="col mt-3">
+          <div class="card">
+            <div class="card-header color_dark">
+              <h3>List Of Categories</h3>
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                    <div
+                      th:if="${message != null}"
+                      class="alert alert-primary"
+                      role="alert"
+                    >
+                      <i>[[${message}]]</i>
+                    </div>
+              <div class="table-responsive">
+                <table
+                  class="table table-striped table-hover table-bordered align-middle"
+                >
+                  <thead class="table color_card_header">
+                    <caption>
+                      Categories
+                    </caption>
+                    <tr>
+                      <th>Category Id</th>
+                      <th>Name</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider ">
+                    <tr
+                      th:each="category : ${categories}"
+                      class="table-primary"
+                    >
+                      <td scope="row">[[${category.categoryId}]]</td>
+                      <td th:text="${category.name}"></td>
+                      <td>
+                        <a
+                          th:href="@{'/admin/categories/edit/' + ${category.categoryId}}"
+                          class="btn btn-info"
+                          ><i class="fas fa-info"></i
+                        ></a>
+                        <a
+                          th:href="@{'/admin/categories/edit/' + ${category.categoryId}}"
+                          class="btn btn-warning"
+                          ><i class="fas fa-edit"></i
+                        ></a>
+                        <a
+                          th:href="@{'/admin/categories/delete/' + ${category.categoryId}}"
+                          class="btn btn-danger"
+                          ><i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <nav aria-label="Page navigation justify-content-center">
+                <ul class="pagination">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="row">
+        <!-- place footer here -->
+      </footer>
+    </main>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

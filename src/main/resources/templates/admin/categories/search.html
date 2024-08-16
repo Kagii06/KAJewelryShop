@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate = "~{admin/dashboardLayout.html}"
+    >
+  <body>
+
+      <section class="row" layout:fragment = "content">
+        <div class="col mt-3">
+          <div class="card">
+            <div class="card-header color_dark">
+              <h5><i class="fas fa-list-ul"></i> LIST OF CATEGORIES</h5>
+            </div>
+            <div class="card-body">
+                <div class="card-body">
+                    <div
+                      th:if="${message != null}"
+                      class="alert alert-primary"
+                      role="alert"
+                    >
+                      <i>[[${message}]]</i>
+                    </div>
+                  <div class="row mt-2 mb-2" >
+                    <div class="col-10">
+                      <form th:action="@{/admin/categories/search}">
+                        <div class="mb-3 ">
+                          <label for="name" class="form-label">Name</label>
+                          <input
+                            type="text"
+                            class="form-control-lg border-success ml-2"
+                            name="name"
+                            id="name"
+                            aria-describedby="helpId"
+                            placeholder="Name"
+                          />
+                          <button class="btn btn-outline-success">
+                            <i class="fas fa-search"></i>
+                            Search
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="float-end col-2">
+                      <a class="btn btn-outline-success" th:href="@{/admin/categories/add}"><i class="fa fa-plus-square" aria-hidden="true"></i>
+                        Add New Category</a>
+                    </div>
+                  </div>
+              <div class="table-responsive">
+                <table
+                  class="table table-striped table-hover table-bordered align-middle"
+                >
+                  <thead>
+                    <caption>
+                      Category
+                    </caption>
+                    <tr  class="table table-dark"
+                   >
+                      <th>Category Id</th>
+                      <th>Name</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    <tr
+                      th:each="category : ${pages.content}"
+                      class="table-primary"
+                    >
+                      <td scope="row">[[${category.categoryId}]]</td>
+                      <td th:text="${category.name}"></td>
+                      <td>
+                        <a
+                          th:href="@{'/admin/categories/view/' + ${category.categoryId}}"
+                          class="btn btn-success"
+                          ><i class="fas fa-info"></i
+                        ></a>
+                        <a
+                          th:href="@{'/admin/categories/edit/' + ${category.categoryId}}"
+                          class="btn btn-warning"
+                          ><i class="fas fa-edit"></i
+                        ></a>
+                        <a
+                          th:href="@{'/admin/categories/delete/' + ${category.categoryId}}"
+                          class="btn btn-danger"
+                          ><i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              Pages: <span
+              th:each="i: ${#numbers.sequence(0, pages.totalPages - 1)}"> <a
+              th:href="@{/admin/categories/search(page=${i},size=${pages.size}, sort = ${sort})}"
+              th:text="${i+1}"></a>
+            </span>
+            </div>
+            <form th:action="@{/admin/categories/searchpaginated}">
+              <select name="sort">
+                <option value="id">Category ID</option>
+                <option value="name">Name</option>
+              </select> <input class = "btn btn-success" type="submit" value="Sort" />
+            </form>
+          </div>
+        </div>
+      </section>
+  </body>
+</html>

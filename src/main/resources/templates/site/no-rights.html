@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate = "~{site/dashboardLayout.html}"
+    >
+  </head>
+  <body>
+    <main class="container " layout:fragment = "content">
+    <section class="row">
+        <div class="col mt-3">
+            <div class="card">
+                <div class="card-header color_dark">
+                    <h4><i class="fa fa-user-times" aria-hidden="true"></i>
+                        NO RIGHTS</h4>
+                </div>
+                  <div class="card-body" style="height: 500px;">
+                    <marquee class="bg-black" behavior="alternate" direction="left" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();"> 
+          
+				  <a style="color:#f9f6f6; text-underline:none;">&nbsp;Bạn không có quyền truy cập trang web này! &nbsp;&nbsp;&nbsp;</a> 
+				  
+
+				            </marquee>
+                        <h3 class="mt-5 text-danger text-center">BẠN KHÔNG CÓ QUYỀN TRUY CẬP VÀO TRANG NÀY</h3>
+                  </div>
+            </div>
+        </div>
+    </section>
+      
+    </main>
+  </body>

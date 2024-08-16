@@ -1,0 +1,10 @@
+.color_light {
+    background-color: #E8EAF6; /* Màu indigo-100 */
+}
+ .color_dark   {
+    background-color: #C5CAE9; /* Màu indigo-200 */
+  }
+  .color_card_header
+  {
+    background-color: #C5CAE9;
+  }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <body>
+    <div class="nav" th:fragment="nav">
+        <nav class="col navbar navbar-expand-sm navbar-ligh text-dark">
+          <div class="container">
+          <a class="navbar-brand" th:href="@{/site/index}" >KaJewelry</a>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0 text-light">
+            <li class="nav-item">
+              <a
+              class="nav-link text-dark active"
+              th:href="@{/site/index}"       
+              aria-current="page"
+              ><i class="fa fa-home" aria-hidden="true"></i>
+              <span class="visually-hidden">(current)</span>Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#"
+              ><i class="fa fa-info" aria-hidden="true"></i> About Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#"
+              ><i class="fa fa-id-card" aria-hidden="true"></i> Contact
+              Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#"
+              ><i class="fa fa-comments" aria-hidden="true"></i>
+              Posts</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#"
+              ><i class="fa fa-list" aria-hidden="true"></i>
+              Collection</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+              class="nav-link text-dark dropdown-toggle"
+              href="#"
+              id="dropdownId"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ><i class="fa fa-user" aria-hidden="true"></i> My
+              Account</a
+              >
+              <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <div th:if="${account == null}">
+              <a class="dropdown-item" th:href="@{/site/login}">Login</a>
+              <a class="dropdown-item"  th:href="@{/site/register}">Registraton</a>
+            </div>
+            <div th:if="${account != null}">
+              <a class="dropdown-item" href="#">Forgot Password</a>
+              <a class="dropdown-item" th:href="@{/site/login}">Logoff</a>
+              <a class="dropdown-item" href="#">Change Password</a>
+              <a class="dropdown-item" href="#">Edit Profile</a>
+            </div>
+              </div>
+
+            </li>
+           
+            </ul>
+          </div>
+
+          <div class="text-right">
+              <!-- <ul class="navbar-nav me-auto mt-5 mt-lg-0 text-light" >
+                <div th:if = "${isAuthenticated}">
+                <li class="nav-item">
+                  <a
+                  class="nav-link text-dark active"
+                  href="#"
+                  aria-current="page"
+                  >
+                  <span class="visually-hidden">(current)</span>Welcome authenticated user!</a
+                  >
+                </li>
+                </div>
+              </ul> -->
+            </div>
+           
+            <img src="../img/logo2.png" width="200px" alt="" class="ml-4" />
+          </div>
+          </div>
+        </nav>
+    </div>
+  </body>
+</html>

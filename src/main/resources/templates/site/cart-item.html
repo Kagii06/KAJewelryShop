@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate = "~{site/dashboardLayout.html}"
+    >
+  </head>
+
+  <body>
+    <main class="container " layout:fragment = "content">
+        <section class="row">
+        <div class="col mt-3">
+            <div class="card">
+                <div class="card-header color_dark">
+                    <h3><i class="fas fa-shopping-cart"></i> CART</h3>
+                  </div>
+                  <div class="card-body">
+
+                    <table class="table table-striped table-hover table-bordered align-middle">
+                        <thead class="table color_card_header">
+                          <tr class="table table-dark">
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <form action="/site/shopping-cart/update" method="post">
+                            <input type="hidden" name="id" value="1" />
+                            <tr class="table-primary"   
+                            th:each="product : ${CART_ITEMS}">
+                              <th>
+                                <img 
+                                th:src = "${product.image != null ?'/site/products/images/'+product.image : 'images/lacbac.jpg/'}"
+                                width="10%"
+                                class="img-thumbnail"/>
+                              </th>
+                              <td th:text="${product.name}">[[${product.name}]]</td>
+                              <td>$[[${product.unitPrice}]]</td>
+                              <td>
+                                <input
+                                  type="text"
+                                  name="quantity"
+                                  th:value="${product.quantity}"
+                                  onblur="this.form.submit()"
+                                  style="width: 50px"
+                                />
+                              </td>
+                              <td>$[[${product.unitPrice * product.quantity}]]</td>
+                              <td><a
+                                th:data-id="${product.productId}" 
+                                th:data-name = "${product.name}"
+                                onclick="showConfirmModalDialog(this.getAttribute('data-id'),this.getAttribute('data-name'))" 
+                                class="btn btn-danger btn-sm">Remove</a></td>
+                            </tr>
+                          </form>
+                        </tbody>
+
+                      </table>
+                      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+                      <script>
+                        function showConfirmModalDialog(id,name)
+                        {
+                          $('#productName').text(name);
+                          $('#yesOption').attr('href','/site/shopping-cart/delete/' +id);
+                          $('#confirmationId').modal('show');
+                        }
+                      
+                      </script>
+                         <div
+                         class="modal fade"
+                         id="confirmationId"
+                         tabindex="-1"
+                         data-bs-backdrop="static"
+                         data-bs-keyboard="false"
+                         
+                         role="dialog"
+                         aria-labelledby="modalTitleId"
+                         aria-hidden="true"
+                       >
+                         <div
+                           class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                           role="document"
+                         >
+                           <div class="modal-content">
+                             <div class="modal-header">
+                               <h5 class="modal-title" id="modalTitleId">
+                                 Confirmation
+                               </h5>
+                               <button
+                                 type="button"
+                                 class="btn-close"
+                                 data-bs-dismiss="modal"
+                                 aria-label="Close"
+                               ></button>
+                             </div>
+                             <div class="modal-body">
+                               Do you want to delete " <span id="productName"></span>"?
+                             </div>
+                             <div class="modal-footer">
+                               <button
+                                 type="button"
+                                 class="btn btn-outline-secondary"
+                                 data-bs-dismiss="modal"
+                               >
+                                 Close
+                               </button>
+                               <a id="yesOption" type="button" class="btn btn-outline-danger">Yes</a>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                  </div>
+                  <div class="card-footer">
+                    <p>Amout: [[${TOTAL}]]</p>
+                    <a class="btn btn-info" th:href="@{/site/shopping-cart/clear}">Clear Cart</a>
+                    <a class="btn btn-info" th:href="@{/site/index}">Add more</a>
+                  </div>
+            </div>
+        </div>
+    </section>
+      
+    </main>
+
+  </body>
+

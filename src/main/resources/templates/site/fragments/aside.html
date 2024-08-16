@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <body>
+    <div th:fragment="aside">
+      <div id="accordion">
+        <div class="card mt-3">
+          <div class="card-header bg-dark">
+            <a class="btn" href="#collapseOne" data-bs-toggle="collapse">
+              <h5 class="text-light">
+                <span class="glyphicon glyphicon-star-empty text-light"></span
+                >Hàng Đặc Biệt
+              </h5>
+            </a>
+          </div>
+          <div
+            id="collapseOne"
+            class="collapse show"
+            data-bs-parent="#accordion"
+          >
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Hàng Bán Chạy</li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                >
+                  Hàng Mới
+                  <span class="badge rounded-pill bg-danger">New</span>
+                </li>
+                <li class="list-group-item">Hàng Giảm Giá</li>
+                <li class="list-group-item">Hàng Đặc Biệt</li>
+                <li class="list-group-item">Hàng Xem Nhiều</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--/Category-->
+
+        <!--Supplier-->
+
+        <div class="card">
+          <div class="card-header bg-dark">
+            <a class="btn" href="#collapseTwo" data-bs-toggle="collapse">
+              <h5 class="text-light">
+                <span class="glyphicon glyphicon-list-alt"></span>Nhà Cung Cấp
+              </h5>
+            </a>
+          </div>
+          <div
+            id="collapseTwo"
+            class="collapse show"
+            data-bs-parent="#accordion"
+          >
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Apple</li>
+                <li class="list-group-item">SamSung</li>
+                <li class="list-group-item">Nokia</li>
+                <li class="list-group-item">GL</li>
+                <li class="list-group-item">Sony Ericson</li>
+                <li class="list-group-item">Dell</li>
+                <li class="list-group-item">Acer</li>
+                <li class="list-group-item">HP</li>
+                <li class="list-group-item">Toshiba</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!--/Supplier-->
+
+        <!--Special-->
+        <div class="card">
+          <div class="card-header bg-dark">
+            <a class="btn" href="#collapseThree" data-bs-toggle="collapse">
+              <h5>
+                <span class="glyphicon glyphicon-star-empty text-light"></span
+                >Hàng Đặc Biệt
+              </h5>
+            </a>
+          </div>
+          <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Hàng Bán Chạy</li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center text-light"
+                >
+                  Hàng Mới <span class="badge rounded-pill bg-danger">New</span>
+                </li>
+                <li class="list-group-item">Hàng Giảm Giá</li>
+                <li class="list-group-item">Hàng Đặc Biệt</li>
+                <li class="list-group-item">Hàng Xem Nhiều</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

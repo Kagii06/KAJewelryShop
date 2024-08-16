@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+  <head></head>
+  <body>
+    <div class="nav" th:fragment="nav">
+      <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">KA JEWELRY</a>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="#" aria-current="page"
+                  ><i class="fas fa-home"></i> Home
+                  <span class="visually-hidden">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="fa fa-address-book" aria-hidden="true"></i> Manager
+                  Customer</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  th:href="@{/admin/categories/searchpaginated}"
+                  ><i class="fa fa-server" aria-hidden="true"></i> Manager
+                  Category</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/products}">
+                  <i class="fa fa-cubes" aria-hidden="true"></i> Manager
+                  Product</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="fa fa-gift" aria-hidden="true"></i> Manager
+                  Order</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/admin/accounts}"
+                  ><i class="fa fa-address-card" aria-hidden="true"></i> Manager
+                  Profile</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link text-dark dropdown-toggle float-end"
+                  href="#"
+                  id="dropdownId"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  ><i class="fa fa-user" aria-hidden="true"></i> My Account</a
+                >
+                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                  <!-- <c:if test="${!isLogin}"> -->
+                  <!-- <a class="dropdown-item" href="Login">Login</a>
+                    <a class="dropdown-item" href="ForgotPassword"
+                      >Forgot Password</a
+                    > -->
+                  <a class="dropdown-item" href="Registration">Registration</a>
+                  <!-- </c:if> -->
+                  <!-- <c:if test="${isLogin}"> -->
+                  <a class="dropdown-item" th:href="@{/alogin}">Logoff</a>
+                  <a class="dropdown-item" href="ChangePassword"
+                    >Change Password</a
+                  >
+                  <a class="dropdown-item" href="EditProfile">Edit Profile</a>
+                  <!-- </c:if> -->
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
